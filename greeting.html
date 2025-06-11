@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Red Card Limited</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/Rose Gold Black Elegant Luxury Circle Beauty Logo.png" type="image/x-icon">
+
+
+
+  <style>
+  
+
+    header {
+      background-color: #d81b60;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .brand-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .brand-buttons button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: 2px solid #d81b60;
+      border-radius: 8px;
+      background: white;
+      color: #d81b60;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .brand-buttons button:hover {
+      background-color: #d81b60;
+      color: white;
+    }
+
+    .card-container {
+      display: grid;
+      /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+ .card-container p{
+text-align: center;
+
+
+ }
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-weight: bold;
+      color: #333;
+    }
+
+    @media(max-width: 600px) {
+      .brand-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Red Card Limited</div>
+
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      <a href="about.html"><i class="fas fa-user"></i>About Us</a>
+      <a href="contact.html"><i class="fas fa-phone"></i>Contact</a>
+
+      <div class="dropdown">
+        <a href="#"><i class="fas fa-th"></i>Categories <i class="fas fa-angle-down"></i></a>
+        <div class="dropdown-content">
+          <a href="wed.html"><i class="fas fa-ring"></i>Wedding Cards</a>
+          <a href="party cards.html"><i class="fas fa-glass-cheers"></i>Party Cards</a>
+          <a href="#"><i class="fas fa-envelope-open-text"></i>Greeting Cards</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-cart">
+      <input type="text" placeholder="Search..." />
+      <i class="fas fa-search"></i>
+    <div class="d-flex align-items-center me-2">
+         <a href="cart.html" class="fas fa-shopping-cart"  type="button" id="cart-button"><span id="cart-count" class="text-danger">0</span></a>
+     <a href="login.html"><i class="fas fa-sign-in-alt" onclick="openModal()" title="Login/Register"></i>
+</a> 
+    </div>
+  </nav>
+<!-- /Navbar -->
+<header>
+  <h1>Greeting Card Gallery</h1>
+  <p>Select a brand to see their cards</p>
+</header>
+
+<div class="brand-buttons">
+  <button onclick="showCards('archies')"><i class="fa-solid fa-heart"></i> Archies</button>
+  <button onclick="showCards('hallmark')"><i class="fa-solid fa-gem"></i> Hallmark</button>
+  <button onclick="showCards('papryus')"><i class="fa-solid fa-feather"></i> Papryus</button>
+</div>
+
+<div class="card-container" id="cardContainer">
+  <p>Please select a brand to view the cards.</p>
+</div>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+
+      <!-- About Section -->
+      <div class="footer-box">
+        <h3>About Red Card Limited</h3>
+        <p>We design and deliver unique greeting, party, and wedding cards with love and creativity.</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-box">
+        <h3>Contact</h3>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-envelope"></i> info@redcard.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> North Nazimabad Karachi</p>
+      </div>
+
+      <!-- Follow Us -->
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-box">
+        <h3>Subscribe</h3>
+        <p>Get updates on new card designs and offers.</p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Red Card Limited. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+
+<script src="script.js"></script>
+<script>
+  //productcards
+
+const cardData = {
+  archies: [
+
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS.",
+      price: 1000,
+      image: "images/ar-con1.webp",
+      detailPage: "get-ar1.html"
+
+    },
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS.",
+      price: 1500,
+      image: "images/ar-con2.webp",
+      detailPage: "get-ar2.html"
+    },
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS.",
+      price: 2000,
+      image: "images/ar-con3.jpg",
+      detailPage: "get-ar3.html"
+    },
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS.",
+      price: 2500,
+      image: "images/ar-fri1.jpg",
+      detailPage: "get-ar4.html"
+    },
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS",
+      price: 3000,
+      image: "images/ar-fri2.jpg",
+      detailPage: "get-ar5.html"
+    },
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS.",
+      price: 3500,
+      image: "images/ar-fri3.jpg",
+      detailPage: "get-ar6.html"
+    },
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS.",
+      price: 4000,
+      image: "images/ar-get1.webp",
+      detailPage: "get-ar7.html"
+    },
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS.",
+      price: 5000,
+      image: "images/ar-get2.jpg",
+      detailPage: "get-ar8.html"
+    },
+    {
+      title: "ARCHIES BRAND",
+      desc: "GREETING CARDS.",
+      price: 4500,
+      image: "images/ar-get3.png",
+      detailPage: "get-ar9.html"
+    }
+
+
+  ],
+  hallmark: [
+
+  {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 1000,
+      image: "images/hw-con1.webp",
+      detailPage: "get-hw1.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 1500,
+      image: "images/hw-con2.avif",
+      detailPage: "get-hw2.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 2000,
+      image: "images/hw-con4.webp",
+      detailPage: "get-hw3.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 2500,
+      image: "images/hw-get1.avif",
+      detailPage: "get-hw4.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 3000,
+      image: "images/hw-get2.avif",
+      detailPage: "get-hw5.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 3500,
+      image: "images/hw-get3.avif",
+      detailPage: "get-hw6.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 4000,
+      image: "images/hw-fri1.avif",
+      detailPage: "get-hw7.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 5000,
+      image: "images/get-fri2.avif",
+      detailPage: "get-hw8.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GREETING CARDS.",
+      price: 4500,
+      image: "images/get-fri3.avif",
+      detailPage: "get-hw9.html"
+    }
+
+
+    ],
+    papryus: [
+      
+      {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 1000,
+      image: "images/pa-fri1.jpg",
+      detailPage: "get-pa1.html"
+    },
+    {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 1500,
+      image: "images/pa-fri2.jpg",
+      detailPage: "get-pa2.html"
+    },
+    {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 2000,
+      image: "images/pa-fri4.jpg",
+      detailPage: "get-pa3.html"
+    },
+    {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 2500,
+      image: "images/pa-con1.jpg",
+      detailPage: "get-pa4.html"
+    },
+    {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 3000,
+      image: "images/pa-con2.jpg",
+      detailPage: "get-pa5.html"
+    },
+    {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 3500,
+      image: "images/pa-con3.jpg",
+      detailPage: "get-pa6.html"
+    },
+    {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 4000,
+      image: "images/pa-get1.jpg",
+      detailPage: "get-pa7.html"
+    },
+    {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 5000,
+      image: "images/pa-get2.jpg",
+      detailPage: "get-pa8.htmll"
+    },
+    {
+      title: "PAPRYUS BRAND",
+      desc: "GREETING CARDS.",
+      price: 4500,
+      image: "images/pa-get3.jpg",
+      detailPage: "get-pa9.html"
+    }
+
+
+
+
+  ]
+};
+const cardContainer = document.getElementById('cardContainer');
+const cartCountElement = document.getElementById('cart-count');
+
+
+
+
+let products = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Render products
+function renderProducts() {
+  if (products.length === 0) {
+    cardContainer.innerHTML = '<p style="text-align:center; width:100%;">Please select a brand to view the cards.</p>';
+    return;
+  }
+  cardContainer.innerHTML = products.map((p, i) => `
+    <div class="card" data-index="${i}">
+      <img src="${p.image}" alt="${p.title}">
+      <div class="card-title">${p.title}</div>
+      <div class="item-price">₹${p.price}</div>
+      <div class="item-price">₹${p.desc}</div>
+      <div class="card-buttons">
+        <button onclick="window.open('${p.detailPage}', '_blank')">Details</button>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Show cards by brand
+function showCards(brand) {
+  products = cardData[brand] || [];
+  renderProducts();
+}
+
+// Update cart count badge
+function updateCartCount() {
+  const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCountElement.textContent = totalCount;
+}
+
+// Add product to cart
+
+function addToCart(product) {
+  // Use the expected key names: name, category, price, quantity
+  const cartItem = {
+    name: product.title,            // expected 'name'
+    category: product.desc,         // expected 'category'
+    price: parseFloat(product.price), // ensure numeric
+    quantity: 1
+  };
+
+  // Check if item already exists in cart
+  const index = cart.findIndex(item => item.name === cartItem.name && item.category === cartItem.category);
+  if (index !== -1) {
+    cart[index].quantity += 1;
+  } else {
+    cart.push(cartItem);
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+  alert(`Added "${cartItem.name}" from "${cartItem.category}" to cart.`);
+}
+
+// Event delegation for Add to Cart buttons
+cardContainer.addEventListener('click', function(event) {
+  if (event.target.classList.contains('add-to-cart-btn')) {
+    const card = event.target.closest('.card');
+    const index = card.getAttribute('data-index');
+    const product = products[index];
+    addToCart(product);
+  }
+});
+
+// Initialize cart count on page load
+updateCartCount();
+
+
+  // search bar
+document.getElementById("searchForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const input = document.getElementById("searchInput").value.trim().toLowerCase();
+
+  if (input === "party card" || input === "party cards") {
+      window.location.href = "party cards.html";
+  } else if (input === "wedding" || input === "wedding cards") {
+      window.location.href = "wed.html";
+  } else if (input === "greeting card" || input === "greeting cards") {
+      window.location.href = "greeting.html";
+  } else {
+      window.location.href = "index.html";
+  }
+});
+</script>
+</body>
+</html>

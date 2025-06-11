@@ -1,0 +1,579 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Red Card Limited</title>
+  <!-- Use only one FontAwesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="shortcut icon" href="images/Rose Gold Black Elegant Luxury Circle Beauty Logo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ff9898;
+      padding: 15px 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
+    .logo {
+      font-size: 24px;
+      color: #e91e63;
+      font-weight: bold;
+      cursor: default;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      position: relative;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .nav-links a::before {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #e91e63;
+      transition: 0.3s;
+    }
+    .nav-links a:hover::before {
+      width: 100%;
+    }
+    .nav-links a i {
+      margin-right: 6px;
+      color: #e91e63;
+    }
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+      cursor: pointer;
+    }
+    .dropdown-content {
+      position: absolute;
+      top: 35px;
+      left: 0;
+      background: #ff9898;
+      min-width: 180px;
+      display: none;
+      flex-direction: column;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      z-index: 999;
+    }
+    .dropdown-content a {
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+    .dropdown-content a i {
+      margin-right: 10px;
+      color: #e91e63;
+    }
+    .dropdown-content a:hover {
+      background-color: #e91e63;
+    }
+    .dropdown:hover .dropdown-content {
+      display: flex;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .search-cart {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: white;
+    }
+    .search-cart input {
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      transition: 0.3s;
+    }
+    .search-cart input:focus {
+      box-shadow: 0 0 8px #e91e63;
+    }
+    .search-cart i {
+      font-size: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .search-cart i:hover {
+      color: #e91e63;
+    }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+      }
+      .dropdown-content {
+        position: relative;
+        top: 0;
+        box-shadow: none;
+        background: #222;
+      }
+      .search-cart {
+        width: 100%;
+        margin-top: 10px;
+        justify-content: space-between;
+      }
+    }
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    /* Layout grid for product details */
+    .product-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 30px;
+    }
+    /* Product images */
+    .product-images {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .main-image {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: contain;
+      height: 400px;
+      background: #f4f4f4;
+      cursor: pointer;
+      user-select: none;
+    }
+    /* Product info */
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .product-title {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: #d81b60;
+      user-select: none;
+    }
+    .product-price {
+      font-size: 1.8rem;
+      color: #d81b60;
+      font-weight: 700;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+    .product-description {
+      font-size: 1.1rem;
+      color: black;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      user-select: text;
+    }
+    .product-specs {
+      margin-bottom: 10px;
+    }
+    .product-specs h3 {
+      margin-bottom: 12px;
+      font-weight: 600;
+      color: black;
+      user-select: none;
+    }
+    .product-specs ul {
+      list-style: disc inside;
+      color: black;
+      font-size: 1rem;
+      user-select: text;
+    }
+    /* Button */
+    .btn-add-cart {
+      padding: 14px 32px;
+      background-color: #d81b60;
+      color: white;
+      font-weight: 600;
+      border-radius: 40px;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: max-content;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-add-cart:hover {
+      background-color: #ad1457;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .product-details {
+        grid-template-columns: 1fr;
+      }
+      .main-image {
+        height: 300px;
+      }
+    }
+    /* Footer */
+    .site-footer {
+      background: #ff9898;
+      color: #eee;
+      padding: 50px 20px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      margin-top: 50px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-box h3 {
+      margin-bottom: 15px;
+      color: #e91e63;
+      font-size: 1.3rem;
+      user-select: none;
+    }
+    .footer-box p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: white;
+    }
+    .footer-box i {
+      margin-right: 8px;
+      color: white;
+      user-select: none;
+    }
+    .footer-box i:hover {
+      color: #e91e63;
+    }
+    .social-icons a {
+      margin-right: 15px;
+      font-size: 1.2rem;
+      color: #eee;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .social-icons a:hover {
+      color: #e91e63;
+    }
+    .subscribe-form {
+      margin-top: 10px;
+    }
+    .subscribe-form input {
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      width: 70%;
+      margin-bottom: 10px;
+    }
+    .subscribe-form button {
+      padding: 10px 20px;
+      border: none;
+      background: #e91e63;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    .subscribe-form button:hover {
+      background: #df3c72;
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #e91e63;
+      margin-top: 30px;
+      padding-top: 15px;
+      font-size: 0.9rem;
+      color: white;
+      user-select: none;
+    }
+    @media (max-width: 768px) {
+      .footer-box {
+        text-align: center;
+      }
+      .social-icons {
+        justify-content: center;
+      }
+    }
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+      z-index: 2000;
+      transition: right 0.3s ease;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .cart-sidebar.active {
+      right: 0;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #e91e63;
+      padding-bottom: 10px;
+    }
+    .cart-items {
+      margin-top: 20px;
+    }
+    .cart-items .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .cart-items img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      margin-right: 15px;
+      border-radius: 8px;
+      user-select: none;
+    }
+    .cart-items .item-info {
+      flex-grow: 1;
+    }
+    .cart-items .item-info h4 {
+      margin: 0 0 4px 0;
+      font-size: 1rem;
+      color: #d81b60;
+    }
+    .cart-items .item-info p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .cart-items .remove-btn {
+      background: transparent;
+      border: none;
+      color: #e91e63;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+    .cart-items .remove-btn:hover {
+      color: #ad1457;
+    }
+    .cart-footer {
+      border-top: 2px solid #e91e63;
+      padding-top: 15px;
+      margin-top: 15px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #d81b60;
+      user-select: none;
+    }
+    .cart-toggle-btn {
+      cursor: pointer;
+      font-size: 22px;
+      color: white;
+      transition: color 0.3s;
+    }
+    .cart-toggle-btn:hover {
+      color: #e91e63;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Red Card Limited</div>
+
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      <a href="about.html"><i class="fas fa-user"></i>About Us</a>
+      <a href="contact.html"><i class="fas fa-phone"></i>Contact</a>
+
+      <div class="dropdown">
+        <a href="#"><i class="fas fa-th"></i>Categories <i class="fas fa-angle-down"></i></a>
+        <div class="dropdown-content">
+          <a href="wed.html"><i class="fas fa-ring"></i>Wedding Cards</a>
+          <a href="party cards.html"><i class="fas fa-glass-cheers"></i>Party Cards</a>
+          <a href="greeting.html"><i class="fas fa-envelope-open-text"></i>Greeting Cards</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-cart">
+      <input type="text" placeholder="Search..." />
+      <i class="fas fa-search"></i>
+      <i class="fas fa-shopping-cart"></i>
+    <a href="login.html"><i class="fas fa-sign-in-alt" onclick="openModal()" title="Login/Register"></i></a>
+
+    </div>
+  </nav>
+  <div class="top-head">
+    <p><a href="index.html">Home</a></p>
+    <p><a href="party cards.html">>Back</a></p>
+   </div>  
+
+  <main class="container">
+    <section class="product-details" aria-label="Product details">
+      <div class="product-images">
+        <img
+          id="mainImage"
+          src="images/btdy8.jpg"
+          alt="BIRTHDAY CARD"
+          class="main-image"
+        />
+      </div>
+      <div class="product-info">
+        <h1 class="product-title">BIRTHDAY CARDS</h1>
+        <p class="product-price">₹4500</p>
+        <p class="product-description">
+          Archies brand birthday cards combine heartfelt messages with elegant designs, making every celebration special. Renowned for quality and creativity, these cards are perfect for expressing genuine emotions on a loved one’s special day.
+        </p>
+        <div class="product-specs">
+          <h3>Design & Material</h3>
+                    <ul>
+                        <li> Premium Design: Beautifully crafted with vibrant artwork and high-quality paper for a lasting impression.</li>
+                        <li>Size: 5" x 7" (standard invitation size)</li>
+                        <li>Heartfelt Message: Thoughtfully written greetings that express genuine emotions and personal warmth.</li>
+                        <li>Customizable text and fonts</li>
+                    </ul>
+        </div>
+        <!-- <button class="btn-add-cart" id="add-to-cart-btn" aria-label="Add Unique Handloom Kurta to cart">Add to Cart</button> -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <aside id="cart-sidebar" class="cart-sidebar" aria-label="Shopping cart sidebar" role="region" aria-live="polite">
+    <div class="cart-header">
+      <h2>ADD TO CART</h2>
+      <button id="close-cart-btn" aria-label="Close shopping cart" title="Close Cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-total">Total: ₹0</div>
+  </aside>
+
+
+<footer class="site-footer">
+    <div class="footer-container">
+      
+      <!-- About Section -->
+      <div class="footer-box">
+        <h3>About Red Card Limited</h3>
+        <p>We design and deliver unique greeting, party, and wedding cards with love and creativity.</p>
+      </div>
+  
+      <!-- Contact Info -->
+      <div class="footer-box">
+        <h3>Contact</h3>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-envelope"></i> info@redcard.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> North Nazimabad Karachi</p>
+      </div>
+  
+      <!-- Follow Us -->
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+  
+      <!-- Newsletter -->
+      <div class="footer-box">
+        <h3>Subscribe</h3>
+        <p>Get updates on new card designs and offers.</p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+        </form>
+      </div>
+  
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Red Card Limited. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    // Cart functionality
+    const cartToggleBtn = document.getElementById('cart-toggle');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const closeCartBtn = document.getElementById('close-cart-btn');
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+
+    let cart = [];
+
+    function updateCartUI() {
+      cartItemsContainer.innerHTML = '';
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        cartTotal.textContent = 'Total: ₹0';
+        return;
+      }
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('item');
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" />
+          <div class="item-info">
+            <h4>${item.name}</h4>
+            <p>Price: ₹${item.price}</p>
+          </div>
+          <button class="remove-btn" aria-label="Remove ${item.name} from cart" title="Remove item">&times;</button>
+        `;
+      });
+    }
+    // Initialize cart UI on page load
+    updateCartUI();
+  </script>
+</body>
+</html>

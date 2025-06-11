@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Red Card Limited</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/Rose Gold Black Elegant Luxury Circle Beauty Logo.png" type="image/x-icon">
+</head>
+<body>
+<!-- Popup -->
+<div class="popup" id="welcomePopup">
+  <img src="images/Rose Gold Black Elegant Luxury Circle Beauty Logo.png" alt="Welcome Card">
+  <h2>Welcome to Red Card Limited!</h2>
+  <p>Your one-stop destination for Wedding, Party, and Greeting Cards. Discover magical designs today!</p>
+  <div class="popup-icons">
+    <i class="fas fa-ring"></i>
+    <i class="fas fa-glass-cheers"></i>
+    <i class="fas fa-envelope-open-text"></i>
+  </div>
+  <button onclick="closePopup()">Close</button>
+</div>
+<!-- Navbar -->
+  <nav>
+    <div class="logo">Red Card Limited</div>
+
+    <div class="nav-links">
+      <a href="#"><i class="fas fa-home"></i>Home</a>
+      <a href="about.html"><i class="fas fa-user"></i>About Us</a>
+      <a href="contact.html"><i class="fas fa-phone"></i>Contact</a>
+
+      <div class="dropdown">
+        <a href="#"><i class="fas fa-th"></i>Categories <i class="fas fa-angle-down"></i></a>
+        <div class="dropdown-content">
+          <a href="wed.html"><i class="fas fa-ring"></i>Wedding Cards</a>
+          <a href="party cards.html"><i class="fas fa-glass-cheers"></i>Party Cards</a>
+          <a href="greeting.html"><i class="fas fa-envelope-open-text"></i>Greeting Cards</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-cart">
+      <form class="d-flex" id="searchForm">
+        <input class="form-control me-2" type="search" placeholder="Search" id="searchInput" />
+      </form>
+      <i class="fas fa-search" type="submit" id="searchBtn"></i>
+      <i class="fas fa-shopping-cart"></i>
+    <a href="login.html"><i class="fas fa-sign-in-alt" onclick="openModal()" title="Login/Register"></i></a>
+
+    </div>
+  </nav>
+<!-- /Navbar -->
+
+<!-- banner img -->
+ <div class="banner-img">
+  <img src="images/first-img.jpg" alt="">
+ </div>
+   
+<!-- Cards Collection -->
+  <section class="cards-section">
+    <h1 class="section-title">Our Cards Collection</h1>
+    <div class="cards-container">
+
+      <!-- Wedding Card -->
+      <div class="card">
+        <img src="images/banner img.jpg" alt="Wedding Card">
+        <div class="card-content">
+          <i class="fas fa-ring icon"></i>
+          <h2>Wedding Cards</h2>
+          <p>Elegant and stylish designs to make your big day extra special.</p>
+          <button><a href="wed.html">View More</a></button>
+        </div>
+      </div>
+
+      <!-- Party Card -->
+      <div class="card">
+        <img src="images/party img.jpg" alt="Party Card">
+        <div class="card-content">
+          <i class="fas fa-glass-cheers icon"></i>
+          <h2>Party Cards</h2>
+          <p>Fun and colorful invitations for your next big celebration!</p>
+          <button><a href="party cards.html">View More</a></button>
+        </div>
+      </div>
+
+      <!-- Greeting Card -->
+      <div class="card">
+        <img src="images/greeting card.webp" alt="Greeting Card">
+        <div class="card-content">
+          <i class="fas fa-envelope-open-text icon"></i>
+          <h2>Greeting Cards</h2>
+          <p>Say it with a card! Thoughtful designs for every occasion.</p>
+          <button><a href="greeting.html">View More</a></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+<!-- brand card -->
+ <div class="main-brand">
+    <h1>Brand Name</h1>
+    <p>Explore our top card brands below</p>
+ </div>
+
+  <section class="brand-section">
+    <div class="brand-cards">
+
+      <!-- Archies -->
+      <div class="brand-card">
+        <h2 class="brand-name">Archies</h2>
+        <p>Pakistan's favorite brand for gifts, cards, and celebration.</p>
+        <button class="animated-btn"><i class="fas fa-gift"></i><a href="archies product card.html">Explore Archies</a></button>
+      </div>
+  <!-- Hallmark -->
+  <div class="brand-card">
+    <h2 class="brand-name">Hallmark</h2>
+    <p>Timeless greeting cards for every heartfelt moment.</p>
+    <button class="animated-btn"><i class="fas fa-heart"></i><a href="hallmark product card.html">Explore Hallmark</a> </button>
+  </div>
+      <!-- Papryus -->
+      <div class="brand-card">
+        <h2 class="brand-name">Papryus</h2>
+        <p>Creative and premium stationery & greeting cards.</p>
+        <button class="animated-btn"><i class="fas fa-paper-plane"></i> <a href="papryus product cards.html">Explore Papryus</a></button>
+      </div>
+
+    </div>
+  </section>
+
+<!-- footer -->
+ <footer class="site-footer">
+  <div class="footer-container">
+    
+    <!-- About Section -->
+    <div class="footer-box">
+      <h3>About Red Card Limited</h3>
+      <p>We design and deliver unique greeting, party, and wedding cards with love and creativity.</p>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+      <p><i class="fas fa-envelope"></i> info@redcard.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> North Nazimabad Karachi</p>
+    </div>
+
+    <!-- Follow Us -->
+    <div class="footer-box">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+
+   <!-- Newsletter -->
+    <div class="footer-box">
+      <h3>Subscribe</h3>
+      <p>Get updates on new card designs and offers.</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="Your email" required />
+        <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Red Card Limited. All Rights Reserved.</p>
+  </div>
+</footer>
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+<script>
+  // search bar
+document.getElementById("searchForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const input = document.getElementById("searchInput").value.trim().toLowerCase();
+
+  if (input === "party card" || input === "party cards") {
+      window.location.href = "party cards.html";
+  } else if (input === "wedding" || input === "wedding cards") {
+      window.location.href = "wed.html";
+  } else if (input === "greeting card" || input === "greeting cards") {
+      window.location.href = "greeting.html";
+  } else {
+      window.location.href = "index.html";
+  }
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

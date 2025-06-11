@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Red Card Limited</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/logo1-01.png" type="image/x-icon">
+</head>
+
+<body>
+  
+  
+  <nav>
+    <div class="logo">Red Card Limited</div>
+
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i>Home</a>
+      <a href="about.html"><i class="fas fa-user"></i>About Us</a>
+      <a href="contact.html"><i class="fas fa-phone"></i>Contact</a>
+
+      <div class="dropdown">
+        <a href="#"><i class="fas fa-th"></i>Categories <i class="fas fa-angle-down"></i></a>
+        <div class="dropdown-content">
+          <a href="wed.html"><i class="fas fa-ring"></i>Wedding Cards</a>
+          <a href="party cards.html"><i class="fas fa-glass-cheers"></i>Party Cards</a>
+          <a href="greeting.html"><i class="fas fa-envelope-open-text"></i>Greeting Cards</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-cart">
+      <input type="text" placeholder="Search..." />
+      <i class="fas fa-search"></i>
+      <i class="fas fa-shopping-cart"></i>
+      <a href="login.html"><i class="fas fa-sign-in-alt" onclick="openModal()" title="Login/Register"></i>
+      </a>
+
+    </div>
+  </nav>
+
+  <header>
+    <h1>Cards Gallery</h1>
+    <p>Elegant designs for your special day</p>
+  </header>
+
+  <div class="brand-buttons">
+    <button onclick="showCards('archies')"><i class="fa-solid fa-heart"></i> Archies</button>
+    <button onclick="showCards('hallmark')"><i class="fa-solid fa-gem"></i> Hallmark</button>
+    <button onclick="showCards('Papryus')"><i class="fa-solid fa-feather"></i> Papryus</button>
+  </div>
+
+  <div class="card-container" id="cardContainer">
+    <p style="text-align:center; width:100%;">Please select a brand to view the cards.</p>
+  </div>
+
+
+  <div class="card-container" id="productContainer"></div>
+  <div class="view-more">
+    <button id="viewMoreBtn">View More</button>
+  </div>
+
+  <!-- Cart Panel -->
+  <div class="cart-panel" id="cartPanel">
+    <button class="close-btn" onclick="toggleCart(false)">×</button>
+    <h3>Add to carts</h3>
+    <div id="cartContent"></div>
+    <p><strong>Total: </strong><span id="cartTotal">PKR</span></p>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="overlay" id="overlay"></div>
+  <div class="detail-modal" id="detailModal">
+    <button class="close-btn" onclick="closeDetail()">×</button>
+    <img id="detailImage" src="" alt="">
+    <h3 id="detailTitle"></h3>
+    <p id="detailDesc"></p>
+    <p><strong>Price:</strong> <span id="detailPrice"></span></p>
+  </div>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+
+      <!-- About Section -->
+      <div class="footer-box">
+        <h3>About Red Card Limited</h3>
+        <p>We design and deliver unique greeting, party, and wedding cards with love and creativity.</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-box">
+        <h3>Contact</h3>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-envelope"></i> info@redcard.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> North Nazimabad Karachi</p>
+      </div>
+
+      <!-- Follow Us -->
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-box">
+        <h3>Subscribe</h3>
+        <p>Get updates on new card designs and offers.</p>
+        <form class="subscribe-form">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Red Card Limited. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+
+
+
+  <script>
+    // Global variables
+    const cardContainer = document.getElementById('cardContainer');
+    const productContainer = document.getElementById("productContainer");
+    const cartPanel = document.getElementById("cartPanel");
+    const cartContent = document.getElementById("cartContent");
+    const cartTotal = document.getElementById("cartTotal");
+    const detailModal = document.getElementById("detailModal");
+    const overlay = document.getElementById("overlay");
+
+    
+
+const cardData = {
+  hallmark: [
+    {
+      title: "HALLMARK BRAND",
+      desc: "BIRTHDAY CARDS.",
+      price: 1000,
+      image: "images/btdy7.jpg?text=Card+1",
+      detailPage: "detail7.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "BIRTHDAY CARDS.",
+      price: 1500,
+      image: "images/btdy8.jpg?text=Card+2",
+      detailPage: "detail8.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "BIRTHDAY CARDS.",
+      price: 2000,
+      image: "images/btdy9.webp?text=Card+3",
+      detailPage: "detail9.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "HOUSE WARMING CARDS.",
+      price: 2500,
+      image: "images/hw4.PNG?text=Card+4",
+      detailPage: "hw-detail4.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "HOUSE WARMING CARDS.",
+      price: 3000,
+      image: "images/hw5.png?text=Card+5",
+      detailPage: "hw-detail5.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "HOUSE WARMING CARDS.",
+      price: 3500,
+      image: "images/hw6.jpg?text=Card+6",
+      detailPage: "hw-detail6.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GRADUATION CARDS.",
+      price: 4000,
+      image: "images/gd4.jpg?text=Card+7",
+      detailPage: "gd-detail4.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GRADUATION CARDS.",
+      price: 5000,
+      image: "images/gd5.jpg?text=Card+8",
+      detailPage: "gd-detail5.html"
+    },
+    {
+      title: "HALLMARK BRAND",
+      desc: "GRADUATION CARDS.",
+      price: 4500,
+      image: "images/gd6.jpg?text=Card+9",
+      detailPage: "gd-detail6.html"
+    }
+  ]
+};
+
+let products = [];  // currently shown products
+let visibleCount = 6;
+let cart = [];
+
+// Render products with buttons and pagination
+const renderProducts = () => {
+  if(products.length === 0){
+    cardContainer.innerHTML = '<p style="text-align:center; width:100%;">Please select a brand to view the cards.</p>';
+    document.getElementById("viewMoreBtn").style.display = "none";
+    return;
+  }
+
+  cardContainer.innerHTML = products.slice(0, visibleCount).map((p, i) => `
+    <div class="card">
+      <img src="${p.image}" alt="${p.title}">
+      <div class="card-title">${p.title}</div>
+      <div class="card-buttons">
+        <!-- Details button now links to detail page in new tab -->
+        <button onclick="window.open('${p.detailPage}', '_blank')">Details</button>
+        <button onclick="addToCart(${i})">Add to Cart</button>
+      </div>
+    </div>
+  `).join("");
+
+  document.getElementById("viewMoreBtn").style.display =
+    visibleCount < products.length ? "inline-block" : "none";
+};
+
+// Show cards of selected brand and reset visible count
+function showCards(brand) {
+  products = cardData[brand] || [];
+  visibleCount = 6;
+  renderProducts();
+}
+
+// Add product to cart
+const addToCart = (index) => {
+  cart.push(products[index]);
+  updateCart();
+  toggleCart(true);
+};
+
+// Update cart content and total price
+const updateCart = () => {
+  cartContent.innerHTML = cart.map(c => `
+    <p>${c.title} - PKR ${c.price}</p>
+  `).join("");
+  const total = cart.reduce((sum, p) => sum + p.price, 0);
+  cartTotal.textContent = `PKR ${total.toFixed(2)}`;
+};
+
+// Toggle cart panel visibility
+const toggleCart = (show) => {
+  cartPanel.classList.toggle("open", show);
+};
+
+// View More button functionality
+document.getElementById("viewMoreBtn").addEventListener("click", () => {
+  visibleCount += 3;
+  renderProducts();
+});
+
+// Initially render empty message
+renderProducts();
+
+  </script>
+
+</body>
+
+</html>
